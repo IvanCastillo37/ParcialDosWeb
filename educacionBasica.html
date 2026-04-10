@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Académica</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Hoja de Vida</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="datosPersonales.html">Datos Personales</a></li>
+        <li><a href="educacionBasica.html">Formación Académica</a></li>
+        <li><a href="experienciaLaboral.html">Experiencia Laboral</a></li>
+        <li><a href="index.html">Inicio</a></li>
+    </ul>
+</nav>
+
+<main>
+    <section>
+        <h2>Formación Académica</h2>
+
+        <form id="form-formacion">
+
+            <!-- EDUCACIÓN BÁSICA -->
+            <h3>Educación Básica</h3>
+
+            <div class="grupo">
+                <label>Nivel Académico</label>
+                <select id="nivel-basico">
+                    <option value="">Seleccione</option>
+                    <option value="primaria">Primaria</option>
+                    <option value="secundaria">Secundaria</option>
+                    <option value="media">Media</option>
+                </select>
+            </div>
+
+            <div class="fila">
+                <div class="grupo">
+                    <label>Institución</label>
+                    <input type="text" id="institucion-basica">
+                </div>
+
+                <div class="grupo">
+                    <label>Año de Finalización</label>
+                    <input type="number" id="anio-basica">
+                </div>
+            </div>
+
+            <!-- EDUCACIÓN SUPERIOR -->
+            <h3>Educación Superior</h3>
+
+            <div id="contenedor-superior">
+                <div class="bloque">
+
+                    <div class="grupo">
+                        <label>Título Obtenido</label>
+                        <input type="text" placeholder="Ej: Ingeniero de Sistemas">
+                    </div>
+
+                    <div class="grupo">
+                        <label>Institución</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="fila">
+                        <div class="grupo">
+                            <label>Fecha Inicio</label>
+                            <input type="date">
+                        </div>
+
+                        <div class="grupo">
+                            <label>Fecha Fin</label>
+                            <input type="date">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="button">Agregar Educación Superior</button>
+
+            <!-- IDIOMAS -->
+            <h3>Idiomas</h3>
+
+            <div id="contenedor-idiomas">
+                <div class="bloque">
+
+                    <div class="grupo">
+                        <label>Idioma</label>
+                        <input type="text">
+                    </div>
+
+                    <div class="grupo">
+                        <label>Nivel</label>
+                        <select>
+                            <option value="">Seleccione</option>
+                            <option>Básico</option>
+                            <option>Intermedio</option>
+                            <option>Avanzado</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="button">Agregar Idioma</button>
+
+            <!-- BOTONES -->
+            <div class="botones">
+                <button type="button">Previsualizar</button>
+                <a href="experienciaLaboral.html"><button type="button">Siguiente</button></a>
+            </div>
+
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>Desarrollo Web</p>
+</footer>
+
+</body>
+</html>
