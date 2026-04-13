@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Experiencia Laboral</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
         <li><a href="datosPersonales.html">Datos Personales</a></li>
         <li><a href="educacionBasica.html">Formación Académica</a></li>
         <li><a href="experienciaLaboral.html">Experiencia Laboral</a></li>
-        <li><a href="index.html">Inicio</a></li>
+        <li><a href="../index.html">Inicio</a></li>
     </ul>
 </nav>
 
@@ -54,11 +54,11 @@
                 </div>
             </div>
 
-            <button type="button">Agregar Experiencia</button>
+            <button type="button" onclick="agregarExperiencia()">Agregar Experiencia</button>
 
             <div class="botones">
-                <button type="button">Previsualizar</button>
-                <button type="button">Siguiente</button>
+                <button type="button" onclick="visualizarDatos()">Previsualizar</button>
+                <button type="button" onclick="guardarHojaDeVida()">Siguiente</button>
             </div>
 
         </form>
@@ -69,5 +69,6 @@
     <p>Desarrollo Web</p>
 </footer>
 
+<script src="../js/script.js"></script>
 </body>
 </html>

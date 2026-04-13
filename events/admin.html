@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body onload="renderizarAdmin()">
+
+<header>
+    <h1>Panel Administrador</h1>
+</header>
+
+<main>
+    <section>
+        <h2>Hojas de Vida</h2>
+
+        <div class="grupo">
+            <label>Filtrar por estado</label>
+            <select id="filtro-estado" onchange="filtrarHojasDeVida()">
+                <option value="todos">Todos</option>
+                <option value="Diligenciada">Diligenciada</option>
+                <option value="Aceptada">Aceptada</option>
+                <option value="Rechazada">Rechazada</option>
+            </select>
+        </div>
+
+        <div class="lista">
+            <p>Usuario 1 - Diligenciada</p>
+            <p>Usuario 2 - Aceptada</p>
+        </div>
+                
+        <div class="grupo">
+            <label>Seleccionar Usuario</label>
+            <select id="seleccionar-usuario">
+                <option value="0">Ikaros</option>
+                <option value="1">Wendy</option>
+            </select>
+        </div>
+
+        <div class="grupo">
+            <label>Nuevo Estado</label>
+            <select id="nuevo-estado">
+                <option value="Aceptada">Aceptada</option>
+                <option value="Rechazada">Rechazada</option>
+            </select>
+        </div>
+
+        <button type="button" onclick="cambiarEstadoManual()">Actualizar Estado</button>
+
+    </section>
+</main>
+
+<footer>
+    <p>Desarrollo Web</p>
+</footer>
+
+<script src="../js/script.js"></script>
+</body>
+</html>
