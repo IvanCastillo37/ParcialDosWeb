@@ -42,28 +42,29 @@ function validarFormularioDatosPersonales() {
     return true;
 }
 function filtrarHojasDeVida() {
-    const filtro = document.getElementById('filtro-estado').value;
-    const listaContenedor = document.querySelector('.lista');
-    
-    // Limpiamos la lista actual
-    listaContenedor.innerHTML = "";
+    const elementoFiltro = document.getElementById('estadoFiltro');
+    const tabla = document.getElementById('tablaHojas');
 
-    // Filtramos el arreglo
+    if (!elementoFiltro || !tabla) return;
+
+    const filtro = elementoFiltro.value;
+    tabla.innerHTML = ""; // Limpiamos la tabla
+
     const resultados = hojasDeVida.filter(hv => {
         if (filtro === "todos") return true;
-        return hv.estado === filtro;
+        return hv.estado.toLowerCase() === filtro.toLowerCase();
     });
 
-    // Pintamos los resultados
-    if (resultados.length === 0) {
-        listaContenedor.innerHTML = "<p>No hay registros con este estado.</p>";
-    } else {
-        resultados.forEach(hv => {
-            const p = document.createElement('p');
-            p.textContent = `${hv.nombres} ${hv.apellidos} - ${hv.estado}`;
-            listaContenedor.appendChild(p);
-        });
-    }
+    resultados.forEach((hv, index) => {
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${hv.nombres} ${hv.apellidos}</td>
+            <td>${hv.estado}</td>
+            <td><button type="button" onclick="verDetalle(${index})">Ver</button></td>
+        `;
+        tabla.appendChild(fila);
+    });
 }
 
 function cambiarEstadoManual() {
@@ -118,12 +119,27 @@ function agregarEducacionSuperior() {
 }
 
 // Función para cambiar el estado de una HV específica
-function actualizarEstado(id, nuevoEstado) {
-    const index = document.getElementById('seleccionar-usuario').value;
-    const estadoNuevo = document.getElementById('nuevoEstado').value;
-    if (hojasDeVida[id]) {
-        hojasDeVida[id].estado = estadoNuevo;
-        alert(`Estado actualizado a: ${estadoNuevo}`);
+function actualizarEstado() {
+    // 1. Obtenemos los elementos del HTML
+    const comboUsuario = document.getElementById('seleccionar-usuario');
+    const comboEstado = document.getElementById('nuevoEstado');
+
+    // 2. Verificamos que existan para evitar errores de "null"
+    if (!comboUsuario || !comboEstado) return;
+
+    const index = comboUsuario.value;
+    const estadoSeleccionado = comboEstado.value;
+
+    // 3. Modificamos el arreglo global
+    if (hojasDeVida[index]) {
+        hojasDeVida[index].estado = estadoSeleccionado;
+        
+        alert(`¡Éxito! El estado de ${hojasDeVida[index].nombres} ahora es: ${estadoSeleccionado}`);
+        
+        //4. Refrescamos la tabla para que se vea el cambio de inmediato
+        renderizarAdmin();
+    } else {
+        alert("Error: No se pudo encontrar el usuario seleccionado.");
     }
 }
 
