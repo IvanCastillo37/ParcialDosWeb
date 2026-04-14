@@ -1,6 +1,6 @@
 // Arreglo global de objetos para almacenar las Hojas de Vida
 let hojasDeVida = [
-    { 
+    {
         nombres: "Ikaros",
         apellidos: "Software",
         documento: "1090123",
@@ -119,9 +119,11 @@ function agregarEducacionSuperior() {
 
 // Función para cambiar el estado de una HV específica
 function actualizarEstado(id, nuevoEstado) {
+    const index = document.getElementById('seleccionar-usuario').value;
+    const estadoNuevo = document.getElementById('nuevoEstado').value;
     if (hojasDeVida[id]) {
-        hojasDeVida[id].estado = nuevoEstado;
-        alert(`Estado actualizado a: ${nuevoEstado}`);
+        hojasDeVida[id].estado = estadoNuevo;
+        alert(`Estado actualizado a: ${estadoNuevo}`);
     }
 }
 
@@ -172,15 +174,38 @@ function calcularExperienciaTotal() {
     return totalMeses;
 }
 
+function verDetalle(index) {
+    alert("Seleccionado: " + hojasDeVida[index].nombres);
+}
+
 function renderizarAdmin() {
-    const listaDiv = document.querySelector('.lista');
-    listaDiv.innerHTML = ''; // Limpiamos la lista actual
+    const tabla = document.getElementById('tablaHojas');
+
+    if (!tabla) return;
+
+    tabla.innerHTML = ""; // Limpiamos la tabla
 
     hojasDeVida.forEach((hv, index) => {
-        const p = document.createElement('p');
-        p.textContent = `${hv.nombres} ${hv.apellidos} - Estado: ${hv.estado}`;
-        listaDiv.appendChild(p);
+        const fila = document.createElement('tr');
+        fila.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${hv.nombres} ${hv.apellidos}</td>
+            <td>${hv.estado}</td>
+            <td><button type="button" onclick="verDetalle(${index})">Ver</button></td>
+        `;
+        tabla.appendChild(fila);
     });
+
+    const listaDiv = document.querySelector('.lista');
+    if (listaDiv) {
+        listaDiv.innerHTML = '';
+        hojasDeVida.forEach((hv) => {
+            const p = document.createElement('p');
+            p.textContent = `${hv.nombres} ${hv.apellidos} - Estado: ${hv.estado}`;
+            listaDiv.appendChild(p);
+        });
+    }
+
 }
 
 function agregarIdioma() {
@@ -267,7 +292,5 @@ function validarYContinuar() {
     }
 }
 
-// Para que cargue la lista si estamos en la página de admin
-if (document.querySelector('.lista')) {
-    renderizarAdmin();
-}
+
+window.onload = renderizarAdmin;
