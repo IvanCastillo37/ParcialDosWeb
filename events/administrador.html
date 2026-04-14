@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Panel Administrador</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="../index.html">Inicio</a></li>
+    </ul>
+</nav>
+
+<main>
+
+    <!-- FILTRO -->
+    <section>
+        <h2>Filtrar Hojas de Vida</h2>
+
+        <div class="fila">
+            <div class="grupo">
+                <label>Estado</label>
+                <select id="estadoFiltro">
+                    <option value="todos">Todos</option>
+                    <option value="diligenciada">Diligenciada</option>
+                    <option value="aceptada">Aceptada</option>
+                    <option value="rechazada">Rechazada</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="filtrarHojas()">Filtrar</button>
+        </div>
+    </section>
+
+    <!-- LISTADO -->
+    <section>
+        <h2>Listado de Hojas de Vida</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tablaHojas">
+                <!-- JS llena esto -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- DETALLE -->
+    <section>
+        <h2>Detalle Hoja de Vida</h2>
+
+        <div id="detalle" class="grupo">
+            <p>Seleccione una hoja de vida</p>
+        </div>
+
+        <div class="fila">
+            <div class="grupo">
+                <label>Nuevo Estado</label>
+                <select id="nuevoEstado">
+                    <option value="diligenciada">Diligenciada</option>
+                    <option value="aceptada">Aceptada</option>
+                    <option value="rechazada">Rechazada</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="actualizarEstado()">Actualizar Estado</button>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Desarrollo Web</p>
+</footer>
+
+<script src="../js/admin.js"></script>
+</body>
+</html>
